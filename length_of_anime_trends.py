@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 from pathlib import Path
+import matplotlib.pyplot as plt
 import math 
 
 pathlist = Path('data').rglob('*.json')
@@ -45,9 +46,16 @@ def find_trends(min_ep, max_ep, row_name):
     num_anime = len(df_curr.index)
     avg_score = df_curr['mean'].mean()
     avg_num_users = df_curr['num_list_users'].mean()
-    print(num_anime, avg_score, avg_num_users)
+    # print(num_anime, avg_score, avg_num_users)
 
     length_trends.loc[len(length_trends.index)] = [row_name, num_anime, avg_score, avg_num_users]
+
+    df_curr['start_date'] = pd.to_datetime(df_curr['start_date'])
+    df_curr = df_curr[['start_date', 'mean']]
+    df_curr = df_curr.groupby(df_curr['start_date'].dt.to_period('Y'))['mean'].agg('mean')
+    fig = df_curr.plot().get_figure()
+    fig.savefig('outputs/choosy-3-len-anime'+row_name+'.jpeg')
+    plt.cla()
 
     # Untrimmed data
     df_curr = df_score
@@ -61,6 +69,13 @@ def find_trends(min_ep, max_ep, row_name):
     # print(num_anime, avg_score, avg_num_users)
 
     length_trends_total.loc[len(length_trends_total.index)] = [row_name, num_anime, avg_score, avg_num_users]
+
+    df_curr['start_date'] = pd.to_datetime(df_curr['start_date'])
+    df_curr = df_curr[['start_date', 'mean']]
+    df_curr = df_curr.groupby(df_curr['start_date'].dt.to_period('Y'))['mean'].agg('mean')
+    fig = df_curr.plot().get_figure()
+    fig.savefig('outputs/all-3-len-anime'+row_name+'.jpeg')
+    plt.cla()
 
     return
 
