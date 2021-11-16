@@ -1,3 +1,10 @@
+## List of outputs
+## outputs/rating_count.jpeg,  outputs/rating_num_anime_vs_year.jpeg, 
+# outputs/rating_vs_average_episode_duration.jpeg, 
+# outputs/rating_vs_mean.jpeg, outputs/rating_vs_num_episodes.jpeg, 
+# outputs/rating_vs_num_list_users.jpeg,
+# outputs/rating_vs_popularity.jpeg, outputs/rating_vs_rank.jpeg
+
 # %%
 import pandas as pd
 import json

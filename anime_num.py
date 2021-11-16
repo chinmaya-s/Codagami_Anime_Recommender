@@ -1,3 +1,5 @@
+## Output: outputs/num_anime_vs_date.jpeg
+
 # %%
 import pandas as pd
 import json
