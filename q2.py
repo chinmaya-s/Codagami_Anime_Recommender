@@ -22,7 +22,7 @@ df['start_date'] = pd.to_datetime(df['start_date'])
 
 # considering only tv, ona and music
 df1 = df[((df['media_type'] == 'tv') | (df['media_type']
-         == 'ona') | (df['media_type'] == 'music'))]
+         == 'ona') | (df['media_type'] == 'movie'))]
 df1 = df1[['start_date', 'mean']]
 df1 = df1.groupby(df1['start_date'].dt.to_period('Q'))['mean'].agg('mean')
 fig = df1.plot().get_figure()

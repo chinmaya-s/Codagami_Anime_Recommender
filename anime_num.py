@@ -1,0 +1,29 @@
+# %%
+import pandas as pd
+import json
+
+# %%
+path_in_str = 'data/anime_list_final_231.json'
+json_file = open(path_in_str)
+data = json.load(json_file)
+df = pd.DataFrame.from_dict(data, orient='index')
+df = df[df['error'] != 'not_found']
+
+# %%
+df['start_date']= pd.to_datetime(df['start_date'])
+
+# %%
+df1 = df.groupby('start_date', as_index=False)['id'].count()
+
+# %%
+df1.set_index(['start_date'], inplace=True)
+
+# %%
+df1.rename({'id': 'anime_count'}, axis=1, inplace=True)
+
+# %%
+plot = df1.plot()
+fig = plot.get_figure()
+fig.savefig("num_anime_vs_date.png")
+
+
