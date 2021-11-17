@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import json
-import matplotlib.pyplot as plt
 
 INP_DIR = 'data/'
 OUT_DIR = 'outputs/'
