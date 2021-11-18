@@ -1,6 +1,5 @@
 from numpy.core.fromnumeric import mean
 import pandas as pd
-import numpy as np
 import json
 import matplotlib.pyplot as plt
 
@@ -17,7 +16,7 @@ df = pd.DataFrame.from_dict(data, orient='index')
 # print(df.columns)
 
 df = df[['genres', 'num_list_users','popularity','start_date','end_date']]
-df.dropna(subset=['genres', 'num_list_users','popularity','start_date'], inplace=True)
+df.dropna(inplace=True)
 
 # change genres column
 df_dict_to_list = [[x['name'] for x in g_list]  for g_list in df['genres']]
