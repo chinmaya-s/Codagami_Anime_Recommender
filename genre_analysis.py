@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 INP_DIR = 'data/'
 OUT_DIR = 'outputs/'
 
-# Genre analysis- most watched (avg no. of users), related (later), most common (no. of anime), popularity time analysis
-
 # get data from json in a dataframe
 path_in_str = 'anime_list_final_231.json'
 json_file = open(INP_DIR+path_in_str)
@@ -15,7 +13,7 @@ data = json.load(json_file)
 df = pd.DataFrame.from_dict(data, orient='index')
 # print(df.columns)
 
-df = df[['genres', 'num_list_users','popularity','start_date','end_date']]
+df = df[['genres', 'num_list_users']]
 df.dropna(inplace=True)
 
 # change genres column
