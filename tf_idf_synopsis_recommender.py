@@ -7,8 +7,12 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import sys
 
-
+n = len(sys.argv)
+if n < 2:
+    print("Please input an anime name")
+    sys.exit()
 
 path_in_str = 'data/anime_list_final_231.json'
 json_file = open(path_in_str)
@@ -32,10 +36,10 @@ anime_df.drop(['genres', 'statistics'], axis=1, inplace=True)
 
 anime_df.rename({'id': 'anime_id'}, axis=1, inplace=True)
 
-nltk.download('wordnet')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('punkt')
+nltk.download('wordnet', quiet = True)
+nltk.download('stopwords', quiet = True)
+nltk.download('averaged_perceptron_tagger', quiet = True)
+nltk.download('punkt', quiet = True)
   
   
   
@@ -91,6 +95,7 @@ tf_idf_vectorizer.get_feature_names_out()
 # Storing anime names
 anime_df['anime_id'] = anime_df['anime_id'].astype(int)
 anime_names = pd.Series(np.array(anime_df['title']))
+
   
 def recommend_anime(title, max_reco = 10, cosine_sim = cos_sim):
     recommended_animes = []
@@ -107,4 +112,10 @@ def recommend_anime(title, max_reco = 10, cosine_sim = cos_sim):
         recommended_animes.append(anime_name)
     return recommended_animes
 
-print(recommend_anime('Fate/Zero', max_reco=20))
+for i in range(1, n):
+    print("Anime recommendations for: "+sys.argv[i])
+
+    try:
+        print(recommend_anime(sys.argv[i]))
+    except:
+        print("Invalid anime name according to MyAnimeList, please enter a valid name")
