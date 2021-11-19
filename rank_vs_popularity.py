@@ -16,7 +16,7 @@ df = pd.DataFrame.from_dict(data, orient='index')
 
 # %%
 df = df[['rank', 'popularity']]
-correalation = df['rank'].corr(df['popularity'])
+correalation = df['rank'].corr(df['popularity'], method='pearson')
 print(f"correalation = {correalation}")
 df.cov()
 
@@ -40,15 +40,15 @@ df = df.sort_values(by=['rank'])
 # %%
 # df2[df2['rank'] < 100].plot()
 df2 = df.copy()
-fig = df2[df2['rank'] < 100].plot().get_figure()
-fig.savefig("rank_vs_popularity_first100.jpg")
+fig = df2[df2['rank'] < 100].plot(x='rank', y='popularity').get_figure()
+fig.savefig("outputs/rank_vs_popularity_first100.jpg")
 
 
 # %%
 interval = 200
 df_grouped = df2.groupby(pd.cut(df2["rank"], np.arange(1, 17314+interval, interval))).mean()
-fig = df_grouped.plot().get_figure()
-fig.savefig("rank_vs_popularity.jpg")
+fig = df_grouped.plot(y='popularity', x='rank').get_figure()
+fig.savefig("outputs/rank_vs_popularity.jpg")
 
 # %%
 df1 = df.copy()
