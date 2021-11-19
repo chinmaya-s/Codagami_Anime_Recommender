@@ -55,8 +55,8 @@ def find_trends(min_ep, max_ep, row_name):
     df_curr = df_curr.groupby(df_curr['start_date'].dt.to_period('Y'))['mean'].agg('mean')
     fig = df_curr.plot().get_figure()
     plt.xlabel('Year')
-    plt.ylabel('Average score of anime')
-    plt.title('Average score over time of anime (TV, ONA, Movie) having length '+row_name+' episodes', fontsize=10)
+    plt.ylabel('Average rating of anime')
+    plt.title('Average rating over time of anime (TV, ONA, Movie) having length '+row_name+' episodes', fontsize=10)
     # plt.gca().set_ylim([4, 8])
     fig.savefig('outputs/choosy-3-len-anime'+row_name+'.jpeg')
 
@@ -80,8 +80,8 @@ def find_trends(min_ep, max_ep, row_name):
     df_curr = df_curr.groupby(df_curr['start_date'].dt.to_period('Y'))['mean'].agg('mean')
     fig = df_curr.plot().get_figure()
     plt.xlabel('Year')
-    plt.ylabel('Average score of anime')
-    plt.title('Average score over time of anime having length '+row_name+' episodes', fontsize=10)
+    plt.ylabel('Average rating of anime')
+    plt.title('Average rating over time of anime having length '+row_name+' episodes', fontsize=10)
     # plt.gca().set_ylim([4, 8])
 
     fig.savefig('outputs/all-3-len-anime'+row_name+'.jpeg')
