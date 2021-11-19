@@ -24,13 +24,14 @@ df['start_date'] = pd.to_datetime(df['start_date'])
 df1 = df[((df['media_type'] == 'tv') | (df['media_type']
          == 'ona') | (df['media_type'] == 'movie'))]
 df1 = df1[['start_date', 'mean']]
-df1 = df1.groupby(df1['start_date'].dt.to_period('Q'))['mean'].agg('mean')
-fig = df1.plot().get_figure()
+df1 = df1.groupby(df1['start_date'].dt.to_period('Y'))['mean'].agg('mean')
+fig = df1.plot(ylabel='rating', xlabel='Start Date',
+               title='Rating trends against the starting date for movie, tv and ona type animes').get_figure()
 fig.savefig('choosy-2.jpeg')
 
 # considering all the media types
 df2 = df[['start_date', 'mean']]
-df2 = df2.groupby(df2['start_date'].dt.to_period('Q'))['mean'].agg('mean')
-print(df2)
-fig2 = df2.plot().get_figure()
+df2 = df2.groupby(df2['start_date'].dt.to_period('Y'))['mean'].agg('mean')
+fig2 = df2.plot(ylabel='Rating', xlabel='Start Date',
+                title='Rating trends against the starting date of animes').get_figure()
 fig2.savefig('all-2.jpeg')
