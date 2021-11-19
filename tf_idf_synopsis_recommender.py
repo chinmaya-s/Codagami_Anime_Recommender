@@ -84,15 +84,12 @@ anime_df.head()
 
 
   
-# Vectorizing lemmatized anime synopsis using TF-IDF
 tf_idf_vectorizer = TfidfVectorizer()
 tf_idf_anime_id = tf_idf_vectorizer.fit_transform((anime_df["lemma_synopsis"]))
   
-# Finding cosine similarity between vectors
 cos_sim = cosine_similarity(tf_idf_anime_id, tf_idf_anime_id)
 tf_idf_vectorizer.get_feature_names_out()
 
-# Storing anime names
 anime_df['anime_id'] = anime_df['anime_id'].astype(int)
 anime_names = pd.Series(np.array(anime_df['title']))
 

@@ -87,17 +87,10 @@ def extract_tokens(text):
     return lemma_sentence
   
 anime_df["lemma_synopsis"]= anime_df["synopsis"].apply(extract_tokens)
-anime_df.head()
 
-  
-
-
-
-# Vectorizing lemmatized anime synopsis using TF-IDF
 tf_idf_vectorizer = TfidfVectorizer()
 tf_idf_anime_id = tf_idf_vectorizer.fit_transform((anime_df["lemma_synopsis"]))
   
-# Finding cosine similarity between vectors
 cos_sim = cosine_similarity(tf_idf_anime_id, tf_idf_anime_id)
 tf_idf_vectorizer.get_feature_names_out().shape
 
@@ -113,7 +106,6 @@ cos_sim_genre = cosine_similarity(tf_idf_genre, tf_idf_genre)
 
 
 
-# Storing anime names
 anime_df['anime_id'] = anime_df['anime_id'].astype(int)
 anime_names = pd.Series(np.array(anime_df['title']))
   
@@ -123,7 +115,7 @@ def recommend_anime(title, max_reco = 10, cosine_sim = cos_sim, cosine_sim_genre
     # print(index)
     # print(anime_df.iloc[index])
     
-    similar_scores = pd.Series(cosine_sim[index]) #.sort_values(ascending = False)
+    similar_scores = pd.Series(cosine_sim[index])
     similar_scores_genre = pd.Series(cosine_sim_genre[index])
 
     similar_scores_mul = similar_scores.mul(similar_scores_genre)
