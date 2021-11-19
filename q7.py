@@ -21,7 +21,6 @@ df = pd.concat(df_list, axis=1)
 df = df.dropna(subset=['id'])
 
 studiosDF = pd.DataFrame(columns=['id', 'name', 'users', 'rating'])
-# use num_list_users for users
 idxCount = 0
 for idx, row in df.iterrows():
     for x in row['studios']:
@@ -34,9 +33,8 @@ studiosDF = studiosDF.groupby(['id', 'name', 'animes'], as_index=False).agg({
     'users': np.mean, 'rating': np.mean})
 studiosDF.sort_values('animes', ascending=False, inplace=True)
 studiosDF.dropna(subset=['users', 'rating'], inplace=True)
-
-
 studiosDF = studiosDF[~(studiosDF['users'] < 100)]
+
 # These graphs are plotted with the condition that the data is
 # sorted by the total number of animes with highest being at top
 fig = studiosDF.plot(x='name', xlabel='Studios in decreasing order of number of animes',
@@ -66,6 +64,7 @@ fig.savefig('plot_rating.jpeg')
 
 
 topStudiosDF = studiosDF.head(n=20)
+
 fig = topStudiosDF.plot(x='name', y='users', kind='bar', title='Average number of users of animes produced by top 20 studios',
                         ylabel='Average Number of Users', xlabel='Studios in decreasing order of number of animes').get_figure()
 fig.set_size_inches(8, 8, forward=True)
