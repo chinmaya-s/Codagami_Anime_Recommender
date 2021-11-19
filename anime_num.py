@@ -13,6 +13,7 @@ df = df[df['error'] != 'not_found']
 
 # %%
 df['start_date']= pd.to_datetime(df['start_date'])
+# df = df[df['start_date'].dt.year < 2022]
 
 # %%
 df1 = df.groupby('start_date', as_index=False)['id'].count()
@@ -26,6 +27,6 @@ df1.rename({'id': 'anime_count'}, axis=1, inplace=True)
 # %%
 # plot = df1.plot()
 # Grouping by year to make the plot smoother
-plot = df1.groupby([(df1.index.year)]).sum().plot()
+plot = df1.groupby([(df1.index.year)]).sum().plot(title='Number of anime started vs year')
 fig = plot.get_figure()
 fig.savefig("outputs/num_anime_vs_year.jpeg")
