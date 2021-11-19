@@ -1,16 +1,14 @@
-## List of outputs
-## outputs/rating_count.jpeg,  outputs/rating_num_anime_vs_year.jpeg, 
-# outputs/rating_vs_average_episode_duration.jpeg, 
-# outputs/rating_vs_mean.jpeg, outputs/rating_vs_num_episodes.jpeg, 
-# outputs/rating_vs_num_list_users.jpeg,
-# outputs/rating_vs_popularity.jpeg, outputs/rating_vs_rank.jpeg
-
 # %%
 import pandas as pd
 import json
-import matplotlib as plt
+from pathlib import Path
+import matplotlib.pyplot as plt
+import matplotlib
+import numpy as np
+import itertools
 
 # %%
+
 def savePlot(plot, name):
     fig = plot.get_figure()
     fig.savefig("outputs/" + name + '.jpeg')
@@ -21,31 +19,66 @@ json_file = open(path_in_str)
 data = json.load(json_file)
 df = pd.DataFrame.from_dict(data, orient='index')
 df = df[df['error'] != 'not_found']
-df.dropna(subset=['rating'], inplace=True)
+df.dropna(subset=['genres'], inplace=True)
 df['start_date']= pd.to_datetime(df['start_date'])
 
 # %%
-df1 = df.groupby(['start_date', 'rating'], as_index=False)['id'].count()
+# df1 = pd.DataFrame(columns=df.columns)
+# df1 = df1[df1['genres'].notna()]
+# # df1 = df1[~df1['genres']]
+# # df1.dropna(subset=['genres'])
+# for count, row in df.iterrows():
+#     temp = row['genres']
+#     if not isinstance(temp, list):
+#         # print(type(temp))
+#         # print(type(temp))
+#         continue
+#     r1 = row
+#     for x in range(int(len(temp))):
+#         r1['genres'] = temp[x]
+#         df1.loc[len(df1.index)] = r1
+# df1
+
+# %%
+# df1[['id', 'genres']]
+
+# %%
+def melt_series(s):
+    lengths = s.str.len().values
+    flat = [i for i in itertools.chain.from_iterable(s.values.tolist())]
+    idx = np.repeat(s.index.values, lengths)
+    return pd.Series(flat, idx, name=s.name)
+
+
+df = melt_series(df.genres).to_frame().join(df.drop('genres', 1))
+df.reset_index(inplace=True)
+
+
+# %%
+df['genre_name'] = df['genres'].apply(lambda x : x['name'])
+df['genre_id'] = df['genres'].apply(lambda x : x['id'])
+
+# %%
+df1 = df.groupby(['start_date', 'genre_name'], as_index=False)['id'].count()
 df1.rename({'id': 'anime_count'}, axis=1, inplace=True)
-df1 = df1.pivot(index='start_date', columns='rating', values='anime_count')
+df1 = df1.pivot(index='start_date', columns='genre_name', values='anime_count')
 
 # %%
-# Grouping by year to make the plot smoother
-plot = df1.groupby([(df1.index.year)]).sum().plot(title='Number of anime started by rating by year')
-savePlot(plot, 'rating_num_anime_vs_year')
+plot = df1.groupby([(df1.index.year)]).sum().plot(title='Number of anime started by genre by year')
+savePlot(plot, 'genre_num_anime_vs_year')
 
 # %%
-df2 = df.groupby(['rating'])['popularity'].mean()
-savePlot(df2.plot(kind='bar', title = 'Mean popularity by rating'), 'rating_vs_popularity')
+df2 = df.groupby(['genre_name'])['popularity'].mean()
+savePlot(df2.plot(kind='bar', title = 'Mean popularity by genre'), 'genre_vs_popularity')
 
 # %%
 def generateHistogram(field):
-    df2 = df.groupby(['rating'])[field].mean()
-    savePlot(df2.plot(kind='bar', title = 'Mean ' + field + ' by rating'), 'rating_vs_' + field)
+    df2 = df.groupby(['genre_name'])[field].mean()
+    savePlot(df2.plot(kind='bar', title = 'Mean ' + field + ' by genre'), 'genre_vs_' + field)
 
 # %%
-df3 = df.groupby(['rating'])['id'].count()
-savePlot(df3.plot(kind='bar', title = 'Num anime by rating'), 'rating_count')
+df3 = df.groupby(['genre_name'])['id'].count()
+savePlot(df3.plot(kind='bar', title = 'Num anime by genre'), 'genre_count')
 
 # %%
 plot_fields = ['mean', 'rank', 'num_list_users', 'num_episodes','average_episode_duration']
