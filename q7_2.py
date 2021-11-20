@@ -2,10 +2,11 @@ import pandas as pd
 import json
 from pathlib import Path
 
-###############################################################################
+################################################################
 # Add the names of animes here for which graph is needed
-names_list = ['Toei Animation', 'Sunrise', 'J.C.Staff']
-###############################################################################
+names_list = ['Toei Animation', 'Sunrise',
+              'J.C.Staff', 'Madhouse', 'Production I.G']
+################################################################
 # Code to load data
 pathlist = Path('data').rglob('*.json')
 df_list = []
@@ -38,16 +39,19 @@ studiosDF['start_date'] = pd.to_datetime(studiosDF['start_date'])
 studiosDF['start_date'] = studiosDF['start_date'].dt.year
 studiosDF.dropna(inplace=True)
 studiosDF['start_date'] = studiosDF['start_date'].astype(int)
-studiosDF['start_date'] = (studiosDF['start_date']//10)*10
+studiosDF = studiosDF[~(studiosDF['start_date'] > 2021)]
 
 # transforming dataframe so that it is easy to plot
 plotDF = pd.crosstab([studiosDF['name']], studiosDF['start_date'])
 plotDF = plotDF.reset_index()
+plotDF.rename(columns={'name': 'Studio'}, inplace=True)
+plotDF = plotDF.set_index(plotDF['Studio'])
+plotDF.drop('Studio', axis=1, inplace=True)
+plotDF = plotDF.transpose()
 
-for idx, row in plotDF.iterrows():
-    titleName = row['name']
-    row = row.drop(['name'])
-    fig = row.plot(kind='bar', title=titleName,
-                   ylabel='Number of animes made', xlabel='Decades').get_figure()
-    fig.set_size_inches(14.5, 8.5, forward=True)
-    fig.savefig('plot_'+titleName+'.jpeg')
+fig = plotDF.plot(title='Number of animes produced by top studios each year',
+                  ylabel='Number of animes produced',
+                  xlabel='Year of production',
+                  legend=True, kind='line').get_figure()
+fig.set_size_inches(14.5, 8.5, forward=True)
+fig.savefig('plot_anime_vs_year.jpeg')

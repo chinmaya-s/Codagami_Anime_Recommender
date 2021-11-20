@@ -15,20 +15,26 @@ df = df[['source', 'rank', 'num_list_users']]
 df.dropna(inplace=True)
 df['rank'] = df['rank'].astype(int)
 df = df[df['rank'] > 0]
+source_rename = {'4_koma_manga': '4-Koma Manga', 'book' : 'Book', 'card_game' : 'Card Game', 'digital_manga': 'Digital Manga', 'game':'Game', 'light_novel': 'Light Novel', 'manga': 'Manga', 'music': 'Music', 'novel': 'Novel', 'original': 'Original', 'other': 'Other', 'picture_book': 'Picture Book', 'radio': 'Radio', 'visual_novel': 'Visual Novel', 'web_manga': 'Web Manga'}
+df = df.replace({'source': source_rename})
 
 
 # get source vs popularity plot
 df_source_pop = df[['source','num_list_users']]
-df_source_pop = df_source_pop.groupby('source').agg({'num_list_users': 'sum'}).reset_index()
+df_source_pop = df_source_pop.groupby('source').agg({'num_list_users': 'mean'}).reset_index()
 
-fig = df_source_pop.plot(x='source', 
-                        y='num_list_users', 
-                        xlabel='Source', 
-                        ylabel='Total No of Users', 
-                        kind='bar', 
-                        title = 'Total Number of Viewers vs Source', 
+df_source_pop.rename(columns = {'num_list_users':'avg_no_users'}, inplace = True)
+
+axes = df_source_pop.plot(x='source', 
+                        y='avg_no_users', 
+                        kind='bar',
                         rot=-45, 
-                        figsize=(15,12)).get_figure()
+                        figsize=(15,12))
+axes.set_xlabel('Source', fontsize=18)
+axes.set_ylabel('Average No of Users', fontsize=18)
+axes.set_title('Average Number of Viewers vs Source', fontsize=22)
+fig = axes.get_figure()
+fig.suptitle('')
 fig.savefig(OUT_DIR+'source_vs_popularity.jpg')
 
 
@@ -36,11 +42,9 @@ fig.savefig(OUT_DIR+'source_vs_popularity.jpg')
 df_source_rating = df[['source','rank']]
 df_source_rating_mean = df_source_rating.groupby('source').agg({'rank': 'mean'}).reset_index()
 source_list = np.unique(df_source_rating_mean['source'])
-print(source_list)
 df_source_rating_mean.sort_values(['rank'], ascending=True, axis=0, inplace=True)
 source_list_ordered = df_source_rating_mean['source'].to_list()
 pos_list = [source_list_ordered.index(k) for k in source_list ]
-print(pos_list)
 
 axes = df_source_rating.boxplot('rank',
                         by='source',
@@ -49,9 +53,9 @@ axes = df_source_rating.boxplot('rank',
                         showfliers=False,
                         rot=-45, 
                         figsize=(15,12))
-axes.set_xlabel('Source')
-axes.set_ylabel('Rank')
-axes.set_title('Source vs Ranking')
+axes.set_xlabel('Source', fontsize=18)
+axes.set_ylabel('Rank', fontsize=18)
+axes.set_title('Source vs Ranking', fontsize=22)
 fig = axes.get_figure()
 fig.suptitle('')
 fig.savefig(OUT_DIR+'source_vs_ranking.jpg')

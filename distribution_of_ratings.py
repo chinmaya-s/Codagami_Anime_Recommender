@@ -65,8 +65,8 @@ fig = plt.figure()
 # creating the bar plot
 plt.bar([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], num_scorers)
  
-plt.xlabel("Score")
-plt.ylabel("No. of scores")
-plt.title("Distribution of scores")
+plt.xlabel("Rating")
+plt.ylabel("No. of ratings")
+plt.title("Distribution of ratings")
 
 fig.savefig('outputs/distribution_of_scores.jpg')
