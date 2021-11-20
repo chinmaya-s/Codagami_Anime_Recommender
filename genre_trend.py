@@ -66,7 +66,7 @@ df2 = df.groupby(['genre_name'])['popularity'].mean().sort_values()
 # df2 = df2[['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy',
 #             'Hentai', 'Historical', 'Kids', 'Music', 'Romance',
 #            'School', 'Sci-Fi', 'Shounen', 'Slice of Life', 'Supernatural']]
-savePlot(df2.plot(kind='bar', title='Mean popularity per genre', figsize=(10, 10), ylabel="Mean Popularity", xlabel="Genre"),
+savePlot(df2.plot(kind='bar', title='Mean popularity per genre', figsize=(10, 10), ylabel="Mean Popularity", xlabel="Genre", legend=False),
          'genre_vs_popularity')
 
 # %%
@@ -75,7 +75,7 @@ savePlot(df2.plot(kind='bar', title='Mean popularity per genre', figsize=(10, 10
 def generateHistogram(field, yname):
     df2 = df.groupby(['genre_name'])[field].mean().sort_values()
     savePlot(df2.plot(kind='bar', title='Mean ' +
-             yname + ' per genre', xlabel='Genre', ylabel=yname, figsize=(10, 10)), 'genre_vs_' + field)
+             yname + ' per genre', xlabel='Genre', ylabel=yname, figsize=(10, 10), legend=False), 'genre_vs_' + field)
 
 
 # %%
@@ -84,16 +84,16 @@ df3 = df3[['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy',
            'Hentai', 'Historical', 'Kids', 'Music', 'Romance',
            'School', 'Sci-Fi', 'Shounen', 'Slice of Life', 'Supernatural']]
 savePlot(df3.plot(kind='bar', title='Number of anime by genre', figsize=(
-    10, 10), ylabel="Number of anime", xlabel="Genre"), 'genre_count')
+    10, 10), ylabel="Number of anime", xlabel="Genre", legend=False), 'genre_count')
 
 # %%
-# plot_fields = [('mean', 'Mean'),
-#             ('rank', 'Rank'),
-#             ('num_list_users', 'Number of users'),
-#             ('num_episodes', 'Number of episodes'),
-#             ('average_episode_duration', 'Average episode duration')]
-# for field, ylabel1 in plot_fields:
-#     generateHistogram(field, ylabel1)
+plot_fields = [('mean', 'Mean'),
+            ('rank', 'Rank'),
+            ('num_list_users', 'Number of users'),
+            ('num_episodes', 'Number of episodes'),
+            ('average_episode_duration', 'Average episode duration')]
+for field, ylabel1 in plot_fields:
+    generateHistogram(field, ylabel1)
 
 
 df_rank = df.groupby(['genre_name'])['rank'].mean()
@@ -105,3 +105,5 @@ df4
 savePlot(df4.plot(kind='bar', x='genre_name', y=['rank', 'popularity'], figsize=(
     10, 10), ylabel="Value of rank/popularity", xlabel="Genre"), 'genre_vs_rank_and_pop')
 # savePlot(df2.plot(kind='bar', title='Mean ' + yname + ' per genre', xlabel='Genre', ylabel=yname, figsize=(10,10)), 'genre_vs_' + field)
+
+# %%

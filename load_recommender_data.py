@@ -83,5 +83,5 @@ def load_recommender_data(path_in_str):
 
 
 def main():
-    path_in_str = 'user_data1.0.json'
+    path_in_str = 'data/user_data.json'
     load_recommender_data(path_in_str)

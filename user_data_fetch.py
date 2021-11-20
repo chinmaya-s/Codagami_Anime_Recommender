@@ -6,7 +6,7 @@ base_url = 'https://api.myanimelist.net/v2/users/'
 base_username = 'chinmay453'
 
 lines = []
-with open('username_list.txt') as f:
+with open('data/username_list.txt') as f:
     lines = f.readlines()
 headers = {"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1N2I0MTJhYTAwMjlhNzQxZjUxYjVhMDcwM2MxYjUzZTJhNDg1YTVlYjIxZmI3ODY5M2MyNWI0MDFmMDFlMmIxMTQzNTAyOTlmN2Y2OTBkIn0.eyJhdWQiOiIwZWEwNzI0NzkxYjA3ZDVjNWYzNzVhOWJiYjE3YjcxNiIsImp0aSI6IjI1N2I0MTJhYTAwMjlhNzQxZjUxYjVhMDcwM2MxYjUzZTJhNDg1YTVlYjIxZmI3ODY5M2MyNWI0MDFmMDFlMmIxMTQzNTAyOTlmN2Y2OTBkIiwiaWF0IjoxNjM2NzM2MjA0LCJuYmYiOjE2MzY3MzYyMDQsImV4cCI6MTYzOTMyODIwNCwic3ViIjoiMTQwMzQwMTQiLCJzY29wZXMiOltdfQ.ViNlAY_w8M6SQjiB7KFUbLytwWkwCjd776dmu6p7gVVOfAZZbgoYYX-Xrer1Xk815QBt2-48SxOCeJAlsnLRhO5BfW27hN2E6u5yVaBiTbdRPiPETp_EhOZNwUJRYx7qjvyPdCS3YjjLASb8A52hGgWpfRLCpWeihzZTiSymNs1V0GrGzVeeb-f79WuNCUnyI3vTYiFd80SnhrYnfJMKYcVof1DyKmUIvKX3AsNiq8NjDi30-Z0dn_H5kocO3BJTHt2xhH-dXe2fqGNmiRLF434fOXTsOx6M-ha7h2DPOxQKwnUS9gjT2ACE-XyGNGYnU9xiiO9o7r1SGYfF-cY6tg"}
 fields = "?fields=list_status&limit=1000"

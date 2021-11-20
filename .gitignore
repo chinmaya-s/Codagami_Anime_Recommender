@@ -4,6 +4,6 @@ env/
 legth_of_anime_trends.ipynb
 anime_num.ipynb
 KNN/
-animes.csv
-ratings.csv
+data/animes.csv
+data/ratings.csv
 rating_trends.ipynb
