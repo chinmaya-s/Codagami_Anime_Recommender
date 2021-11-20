@@ -74,7 +74,7 @@ The Alternating Least Square (ALS) algorithm is a matrix factorization approach 
 #### TF-IDF 
 Term Frequency — Inverse Document Frequency (TF-IDF) based recommendation systems are content based recommenders. This method primarily uses the synopsis of an anime to provide recommendation by assigning importance to words mentioned in synopsis with more importance to words mentioned less commonly among all synopsis.
 
-#### Usage
+##### Usage
 *File*: tf_idf_syn_gen_rate.py <br />
 *Get recommendations*: Run the following bash command replacing <anime_name_i> (i is a number) by the name of the anime for which you want recommendations. The anime name should be the same as it is on MyAnimeList. Recommendations for multiple anime can be obtained by entering multiple names separated by a whitespace.
 ```bash
