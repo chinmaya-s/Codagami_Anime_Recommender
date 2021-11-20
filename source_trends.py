@@ -7,7 +7,7 @@ import matplotlib as plt
 # %%
 def savePlot(plot, name):
     fig = plot.get_figure()
-    fig.savefig("outputs/" + name + '.jpeg')
+    fig.savefig("outputs/" + name + '.jpeg', bbox_inches='tight')
 
 
 # %%

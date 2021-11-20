@@ -41,14 +41,14 @@ df = df.sort_values(by=['rank'])
 # df2[df2['rank'] < 100].plot()
 df2 = df.copy()
 fig = df2[df2['rank'] < 100].plot(x='rank', y='popularity', xlabel='Rank', ylabel='Popularity', figsize=(8,6)).get_figure()
-fig.savefig("outputs/rank_vs_popularity_first100.jpg")
+fig.savefig("outputs/rank_vs_popularity_first100.jpg", bbox_inches='tight')
 
 
 # %%
 interval = 200
 df_grouped = df2.groupby(pd.cut(df2["rank"], np.arange(1, 17314+interval, interval))).mean()
 fig = df_grouped.plot(y='popularity', x='rank', xlabel='Rank', ylabel='Popularity', figsize=(8,6)).get_figure()
-fig.savefig("outputs/rank_vs_popularity.jpg")
+fig.savefig("outputs/rank_vs_popularity.jpg", bbox_inches='tight')
 
 # %%
 df1 = df.copy()
