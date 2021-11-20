@@ -23,8 +23,10 @@ df = df.replace({'source': source_rename})
 df_source_pop = df[['source','num_list_users']]
 df_source_pop = df_source_pop.groupby('source').agg({'num_list_users': 'mean'}).reset_index()
 
+df_source_pop.rename(columns = {'num_list_users':'avg_no_users'}, inplace = True)
+
 axes = df_source_pop.plot(x='source', 
-                        y='num_list_users', 
+                        y='avg_no_users', 
                         kind='bar',
                         rot=-45, 
                         figsize=(15,12))
