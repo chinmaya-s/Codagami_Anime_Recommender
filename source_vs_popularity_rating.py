@@ -11,7 +11,7 @@ json_file = open(INP_DIR+path_in_str)
 data = json.load(json_file)
 df = pd.DataFrame.from_dict(data, orient='index')
 
-df = df[['source', 'rank', 'num_list_users']]
+df = df[['source', 'rank', 'num_list_users', 'mean']]
 df.dropna(inplace=True)
 df['rank'] = df['rank'].astype(int)
 df = df[df['rank'] > 0]
@@ -59,3 +59,25 @@ axes.set_title('Source vs Ranking', fontsize=22)
 fig = axes.get_figure()
 fig.suptitle('')
 fig.savefig(OUT_DIR+'source_vs_ranking.jpg')
+
+
+df_source_rating = df[['source','mean']]
+df_source_rating_mean = df_source_rating.groupby('source').agg({'mean': 'mean'}).reset_index()
+source_list = np.unique(df_source_rating_mean['source'])
+df_source_rating_mean.sort_values(['mean'], ascending=True, axis=0, inplace=True)
+source_list_ordered = df_source_rating_mean['source'].to_list()
+pos_list = [source_list_ordered.index(k) for k in source_list ]
+
+axes = df_source_rating.boxplot('mean',
+                        by='source',
+                        grid=False,
+                        positions=pos_list,
+                        showfliers=False,
+                        rot=-45, 
+                        figsize=(15,12))
+axes.set_xlabel('Source', fontsize=18)
+axes.set_ylabel('Average Rating', fontsize=18)
+axes.set_title('Source vs Average Rating', fontsize=22)
+fig = axes.get_figure()
+fig.suptitle('')
+fig.savefig(OUT_DIR+'source_vs_average_rating.jpg')
