@@ -46,9 +46,9 @@ The details of various data analysis scripts are summarized in a table below.
 | most_viewed_anime_trends.py | | |
 | anime_count_vs_year.py | Plots the number of anime released every year | num_anime_vs_year.jpeg  |      
 | rank_vs_popularity.py | Analyzes correlation between rank and popularity | rank_vs_popularity.jpg, rank_vs_popularity_first100.jpg|
-| anime_vs_related.py | | |         
+| anime_vs_related.py | Calculates the Pearson Correlation Coefficient of the rating and number of viewers of an anime with respect to the same for related anime. The calculation is done in 2 parts considering 4000 anime in each for efficient computation. | The Pearson Correlation Coefficient and p-value are output directly on the terminal |         
 | source_trends.py | Plots anime trends based on source over years and rank vs. popularity | source_count.jpeg, source_num_anime_vs_year.jpeg, source_vs_popularity.jpeg, source_vs_rank_and_pop.jpeg |
-| distribution_of_ratings.py | | |  
+| distribution_of_ratings.py | Plots the frequency of each rating as given by the viewers to various anime. | distribution_of_scores.jpg |  
 | source_vs_popularity_rating.py | | |
 | starting_date_vs_rating.py | | |
 | genre_analysis.py | | |           
@@ -56,7 +56,7 @@ The details of various data analysis scripts are summarized in a table below.
 | genre_pop_time_analysis.py | | |  
 | studio_trends.py | | |
 | genre_trend.py | Plots genre trends year-wise, similarity in rank and popularity | genre_count.jpeg, genre_num_anime_vs_year.jpeg, genre_vs_popularity.jpeg, genre_vs_rank_and_pop.jpeg |              
-| length_of_anime_trends.py | Plots the averate rating of anime over time belonging to different categories based on number of episode. Also outputs csv files containing aggregate data for anime belonging to different categories based on number of episodes. | length-of-anime-trends.csv (excludes OVA, Specials and Music), length-of-anime-trends-untrimmed.csv, all-3-len-anime{episode range}.jpeg, choosy-3-len-anime{episode range}.jpeg where episode range lies in {0-9, 10-19, 20-29, 30-49, 50-99, 100-199, 200-499, 500-999, 1000+}|   
+| length_of_anime_trends.py | Plots the average rating of anime over time belonging to different categories based on number of episode. Also outputs csv files containing aggregate data for anime belonging to different categories based on number of episodes. | length-of-anime-trends.csv (excludes OVA, Specials and Music), length-of-anime-trends-untrimmed.csv, all-3-len-anime{episode range}.jpeg, choosy-3-len-anime{episode range}.jpeg where episode range lies in {0-9, 10-19, 20-29, 30-49, 50-99, 100-199, 200-499, 500-999, 1000+}|   
 
 
 ### Recommendation systems
