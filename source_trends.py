@@ -32,7 +32,7 @@ df1.sum(axis=0, skipna=True)
 
 # %%
 # Grouping by year to make the plot smoother
-plot = df1.groupby([(df1.index.year)]).sum().plot(ylabel="Number of anime", xlabel="Year", figsize=(10,6))
+plot = df1.groupby([(df1.index.year)]).sum().plot(title='Year-wise number of anime produced by source', ylabel="Number of anime", xlabel="Year", figsize=(10,6))
 savePlot(plot, 'source_num_anime_vs_year')
 
 
