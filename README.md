@@ -45,9 +45,9 @@ The details of various data analysis scripts are summarized in a table below.
 | age_rating_trends.py | Plots the trends of age rating groups on various variables | rating_vs_num_list_users.jpeg, rating_vs_num_episodes.jpeg, rating_vs_average_episode_duration.jpeg, rating_vs_mean.jpeg, rating_vs_rank.jpeg, rating_count.jpeg, rating_vs_popularity.jpeg, rating_num_anime_vs_year.jpeg  |        
 | most_viewed_anime_trends.py | | |
 | anime_count_vs_year.py | Plots the number of anime released every year | num_anime_vs_year.jpeg  |      
-| rank_vs_popularity.py | | |
+| rank_vs_popularity.py | Analyzes correlation between rank and popularity | rank_vs_popularity.jpg, rank_vs_popularity_first100.jpg|
 | anime_vs_related.py | | |         
-| source_trends.py | | |
+| source_trends.py | Plots anime trends based on source over years and rank vs. popularity | source_count.jpeg, source_num_anime_vs_year.jpeg, source_vs_popularity.jpeg, source_vs_rank_and_pop.jpeg |
 | distribution_of_ratings.py | | |  
 | source_vs_popularity_rating.py | | |
 | starting_date_vs_rating.py | | |
@@ -55,7 +55,7 @@ The details of various data analysis scripts are summarized in a table below.
 | studio_production_trends.py | | |
 | genre_pop_time_analysis.py | | |  
 | studio_trends.py | | |
-| genre_trend.py | | |              
+| genre_trend.py | Plots genre trends year-wise, similarity in rank and popularity | genre_count.jpeg, genre_num_anime_vs_year.jpeg, genre_vs_popularity.jpeg, genre_vs_rank_and_pop.jpeg |              
 | length_of_anime_trends.py | Plots the averate rating of anime over time belonging to different categories based on number of episode. Also outputs csv files containing aggregate data for anime belonging to different categories based on number of episodes. | length-of-anime-trends.csv (excludes OVA, Specials and Music), length-of-anime-trends-untrimmed.csv, all-3-len-anime{episode range}.jpeg, choosy-3-len-anime{episode range}.jpeg where episode range lies in {0-9, 10-19, 20-29, 30-49, 50-99, 100-199, 200-499, 500-999, 1000+}|   
 
 
