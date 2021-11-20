@@ -62,7 +62,7 @@ The details of various data analysis scripts are summarized in a table below.
 We used item-based collaborative filtering with Singular Value Decomposition to build our recommendation system. Collaborative filtering is a method to predict a rating for a user item pair based on the history of ratings given by the user to the item. We used the SVD matrix factorisation to find the user-rating matrix and used cosine similarity for finding best matches. We make use of CUDA from PyTorch for faster implementation of SVD.
 ##### Usage
 *File*: SVD_recommender.ipynb <br />
-*Get recommendations*: Go to the cell labelled __Make Recommendations__ . Add the anime name you want recommendations for in `anime_name` variable in the cell, numbr of recommndations in `top_n` variable in the cell and run the cell. The recommendations will be printed below the cell.
+*Get recommendations*: Go to the cell labelled __Make Recommendations__ . Add the anime name you want recommendations for in `anime_name` variable in the cell, number of recommendations in `top_n` variable in the cell and run the cell. The recommendations will be printed below the cell.
 
 #### KNN
 We used item-based collaborative filtering with KNN to build our recommendation system. KNN is a non-parametric, lazy learning method. It uses a database in which the data points are separated into several clusters to make inferences for new samples. We used cosine similarity for the nearest neighbor search.
