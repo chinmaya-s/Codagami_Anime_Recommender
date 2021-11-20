@@ -38,24 +38,23 @@ savePlot(plot, 'source_num_anime_vs_year')
 
 # %%
 df2 = df.groupby(['source'])['popularity'].mean()
-savePlot(df2.plot(kind='bar', title = 'Mean popularity by source'), 'source_vs_popularity')
+savePlot(df2.plot(kind='bar', title = 'Mean popularity by source', legend=False), 'source_vs_popularity')
 
 
 # %%
 def generateHistogram(field):
     df2 = df.groupby(['source'])[field].mean()
-    savePlot(df2.plot(kind='bar', title = 'Mean ' + field + ' by source'), 'source_vs_' + field)
+    savePlot(df2.plot(kind='bar', title = 'Mean ' + field + ' by source', legend=False), 'source_vs_' + field)
 
 
 # %%
 df3 = df.groupby(['source'])['id'].count()
-savePlot(df3.plot(kind='bar', title = 'Num anime by source'), 'source_count')
+savePlot(df3.plot(kind='bar', title = 'Num anime by source', legend=False), 'source_count')
 
 
-# %%
-# plot_fields = ['mean', 'rank', 'num_list_users', 'num_episodes','average_episode_duration']
-# for field in plot_fields:
-#     generateHistogram(field)
+plot_fields = ['mean', 'rank', 'num_list_users', 'num_episodes','average_episode_duration']
+for field in plot_fields:
+    generateHistogram(field)
 
 
 
@@ -69,3 +68,5 @@ df4 = pd.DataFrame(frame)
 df4
 savePlot(df4.plot(kind='bar', x='source', y=['rank', 'popularity'], figsize=(10,10), ylabel="Value of rank/popularity", xlabel="Source Material"), 'source_vs_rank_and_pop')
 
+
+# %%
