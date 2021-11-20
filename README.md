@@ -48,11 +48,11 @@ The details of various data analysis scripts are summarized in a table below.
 | anime_vs_related.py | Calculates the Pearson Correlation Coefficient of the rating and number of viewers of an anime with respect to the same for related anime. The calculation is done in 2 parts considering 4000 anime in each for efficient computation. | The Pearson Correlation Coefficient and p-value are output directly on the terminal |         
 | source_trends.py | Plots anime trends based on source over years and rank vs. popularity | source_count.jpeg, source_num_anime_vs_year.jpeg, source_vs_popularity.jpeg, source_vs_rank_and_pop.jpeg |
 | distribution_of_ratings.py | Plots the frequency of each rating as given by the viewers to various anime. | distribution_of_scores.jpg |  
-| source_vs_popularity_rating.py | | |
+| source_vs_popularity_rating.py | Plots popularity, ranking and average rating trends based on source of anime | source_vs_popularity.jpg, source_vs_ranking.jpg, source_vs_average_rating.jpg |
 | starting_date_vs_rating.py | | |
-| genre_analysis.py | | |           
+| genre_analysis.py | Plots genre-wise anime count and users. Also generates a comparative plot for production count vs viewer count for each genre| most_common_genre.jpg, most_watched_genre.jpg, genre_popularity_vs_number.jpg |           
 | studio_production_trends.py | | |
-| genre_pop_time_analysis.py | | |  
+| genre_pop_time_analysis.py | Plots the year-wise number of viewers of genres | genre_popularity_time_analysis.jpg |  
 | studio_trends.py | | |
 | genre_trend.py | Plots genre trends year-wise, similarity in rank and popularity | genre_count.jpeg, genre_num_anime_vs_year.jpeg, genre_vs_popularity.jpeg, genre_vs_rank_and_pop.jpeg |              
 | length_of_anime_trends.py | Plots the average rating of anime over time belonging to different categories based on number of episode. Also outputs csv files containing aggregate data for anime belonging to different categories based on number of episodes. | length-of-anime-trends.csv (excludes OVA, Specials and Music), length-of-anime-trends-untrimmed.csv, all-3-len-anime{episode range}.jpeg, choosy-3-len-anime{episode range}.jpeg where episode range lies in {0-9, 10-19, 20-29, 30-49, 50-99, 100-199, 200-499, 500-999, 1000+}|  
@@ -88,7 +88,8 @@ The dataset we used for our project is the [MyAnimeList](https://myanimelist.net
 The data we obtained can be found [here](https://drive.google.com/drive/folders/1asYoWIx1hm156rqrCEhDpxjV0ldF3CYD?usp=sharing).
 
 ### Data retrieval Scripts
-- __Scraping Valid Anime IDs:__ Valid anime IDs can be found [here](https://myanimelist.net/info.php?search=\%25\%25\%25&go=relationids&divname=relationGen1). <insert Script name here : Sakshi>
+- __Scraping Valid Anime IDs:__ Valid anime IDs can be found [here](https://myanimelist.net/info.php?search=\%25\%25\%25&go=relationids&divname=relationGen1). 
+script used to scrape the data is *extract_valid_anime_ids.py*
 - __Fetch Anime Data:__ *fetch_api.py* fetches anime data from anime IDs.
 - __Fetch Username Data:__ *username_fetch.py* Fetches list of usernames using BFS on friend list of a root user. Since the official MAL API doesn't currently provide support for fetching friend list of a user, we had to use an unofficial API whose documentation can be found at [Jikan API](https://jikan.moe/).
 - __Fetch User Data:__ *user_data_fetch.py* fetches the details of users from username.
