@@ -28,6 +28,6 @@ for id in ids_list2:
 print(len(ids))
 sorted(ids)
 
-with open('anime_ids.txt', 'w') as f:
+with open('data/anime_ids.txt', 'w') as f:
     for item in ids:
         f.write("%s\n" % item)
