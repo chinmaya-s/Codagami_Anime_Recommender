@@ -86,6 +86,8 @@ The dataset we used for our project is the [MyAnimeList](https://myanimelist.net
 
 The data we obtained can be found [here](https://drive.google.com/drive/folders/1asYoWIx1hm156rqrCEhDpxjV0ldF3CYD?usp=sharing).
 
+The data files need to be put in the data directory in order to run the scripts.
+
 ### Data retrieval Scripts
 - __Scraping Valid Anime IDs:__ Valid anime IDs can be found [here](https://myanimelist.net/info.php?search=\%25\%25\%25&go=relationids&divname=relationGen1). 
 script used to scrape the data is *extract_valid_anime_ids.py*
@@ -93,4 +95,3 @@ script used to scrape the data is *extract_valid_anime_ids.py*
 - __Fetch Username Data:__ *username_fetch.py* Fetches list of usernames using BFS on friend list of a root user. Since the official MAL API doesn't currently provide support for fetching friend list of a user, we had to use an unofficial API whose documentation can be found at [Jikan API](https://jikan.moe/).
 - __Fetch User Data:__ *user_data_fetch.py* fetches the details of users from username.
   
-## Project Structure
