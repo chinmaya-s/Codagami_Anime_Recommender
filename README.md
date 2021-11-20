@@ -40,7 +40,7 @@ The output plots are stored in outputs/ directory.
 The details of various data analysis scripts are summarized in a table below.
 
 | File Name | Description | Outputs | 
-| --- | ----------- | ---- |
+| --- | ------------ | ------ |
 | age_rating_trends.py | Plots the trends of age rating groups on various variables | rating_vs_num_list_users.jpeg, rating_vs_num_episodes.jpeg, rating_vs_average_episode_duration.jpeg, rating_vs_mean.jpeg, rating_vs_rank.jpeg, rating_count.jpeg, rating_vs_popularity.jpeg, rating_num_anime_vs_year.jpeg  |        
 | most_viewed_anime_trends.py | | |
 | anime_count_vs_year.py | Plots the number of anime released every year | num_anime_vs_year.jpeg  |      
