@@ -9,7 +9,7 @@
 # # for path in pathlist:
 #     # because path is object not string
 # # path_in_str = str(path)
-# json_file = open('user_data1.0.json')
+# json_file = open('data/user_data.json')
 # data = json.load(json_file)
 # df = pd.DataFrame.from_dict(data, orient='index')
 # # df_list.append(df)
@@ -23,7 +23,7 @@ import json
 import matplotlib.pyplot as plt
 import itertools
 
-path_in_str = 'user_data1.0.json'
+path_in_str = 'data/user_data.json'
 json_file = open(path_in_str)
 data = json.load(json_file)
 df = pd.DataFrame.from_dict(data, orient='index')
