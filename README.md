@@ -23,6 +23,7 @@ Steps to create python virtual environment
 ## Install
 ```bash
 $ python3 -m venv env
+$ source env/bin/activate
 $ pip install -r requirements.txt 
 ```
 
@@ -55,7 +56,7 @@ The details of various data analysis scripts are summarized in a table below.
 | genre_pop_time_analysis.py | | |  
 | studio_trends.py | | |
 | genre_trend.py | | |              
-| length_of_anime_trends.py | | |   
+| length_of_anime_trends.py | Plots the averate rating of anime over time belonging to different categories based on number of episode. Also outputs csv files containing aggregate data for anime belonging to different categories based on number of episodes. | length-of-anime-trends.csv (excludes OVA, Specials and Music), length-of-anime-trends-untrimmed.csv, all-3-len-anime{episode range}.jpeg, choosy-3-len-anime{episode range}.jpeg where episode range lies in {0-9, 10-19, 20-29, 30-49, 50-99, 100-199, 200-499, 500-999, 1000+}|   
 
 
 ### Recommendation systems
