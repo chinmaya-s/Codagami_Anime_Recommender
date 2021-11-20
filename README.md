@@ -72,7 +72,15 @@ The Alternating Least Square (ALS) algorithm is a matrix factorization approach 
 *Get recommendations*: Go to the cell labelled __Make Recommendations__ . Add the anime name you want recommendations for in `my_anime_list` variable in the cell, and run the cell. The recommendations will be printed below the cell.
 
 #### TF-IDF 
-<add_text: Chinmaya>
+Term Frequency — Inverse Document Frequency (TF-IDF) based recommendation systems are content based recommenders. This method primarily uses the synopsis of an anime to provide recommendation by assigning importance to words mentioned in synopsis with more importance to words mentioned less commonly among all synopsis.
+
+##### Usage
+*File*: tf_idf_syn_gen_rate.py <br />
+*Get recommendations*: Run the following bash command replacing <anime_name_i> (i is a number) by the name of the anime for which you want recommendations. The anime name should be the same as it is on MyAnimeList. Recommendations for multiple anime can be obtained by entering multiple names separated by a whitespace.
+```bash
+$ python3 tf_idf_syn_gen_rate.py "<anime_name_1>" "<anime_name_2>" ... "<anime_name_n>"
+``` 
+The above recommender uses the synopsis, genre and rating of an anime to make suggestion. You can also use tf_idf_synopsis_recommender.py for only synopsis based recommendation and tf_idf_syn_genre_recommender.py for only synopsis and genre based recommendation.
 
 ## Data
 The dataset we used for our project is the [MyAnimeList](https://myanimelist.net/) dataset. To retrieve the data corresponding to each anime and users on MyAnimeList, we used the official MyAnimeList API, the documentation for it can be found at [MAL API](https://myanimelist.net/apiconfig/references/api/v2).
