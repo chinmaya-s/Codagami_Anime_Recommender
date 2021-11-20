@@ -41,7 +41,7 @@ fig = studiosDF.plot(x='name', xlabel='Studios in decreasing order of number of 
                      y='animes', ylabel='Number of animes', title='Number of animes produced by each studio').get_figure()
 ax = plt.gca()
 ax.axes.xaxis.set_ticks([])
-fig.savefig('plot_animes.jpeg')
+fig.savefig('outputs/plot_animes.jpeg')
 
 
 fig = studiosDF.plot(x='name',
@@ -53,14 +53,14 @@ plt.xlabel('Studios in decreasing order of number of animes', fontsize=20)
 plt.ylabel('Number of users', fontsize=20)
 plt.yticks(fontsize=20)
 fig.set_size_inches(14.5, 10, forward=True)
-fig.savefig('plot_users.jpeg')
+fig.savefig('outputs/plot_users.jpeg')
 
 
 fig = studiosDF.plot(x='name', xlabel='Studios in decreasing order of number of animes',
                      y='rating', ylabel='Average Rating', title='Average rating of animes produced by each studio').get_figure()
 ax = plt.gca()
 ax.axes.xaxis.set_ticks([])
-fig.savefig('plot_rating.jpeg')
+fig.savefig('outputs/plot_rating.jpeg')
 
 
 topStudiosDF = studiosDF.head(n=20)
@@ -69,10 +69,10 @@ fig = topStudiosDF.plot(x='name', y='users', kind='bar', title='Average number o
                         ylabel='Average Number of Users', xlabel='Studios in decreasing order of number of animes').get_figure()
 fig.set_size_inches(8, 8, forward=True)
 plt.tight_layout()
-fig.savefig('plot_users_top_studios.jpeg')
+fig.savefig('outputs/plot_users_top_studios.jpeg')
 
 fig = topStudiosDF.plot(x='name', y='rating', kind='bar', title='Average rating of animes produced by top 20 studios',
                         ylabel='Average Rating', xlabel='Studios in decreasing order of number of animes').get_figure()
 fig.set_size_inches(8, 8, forward=True)
 plt.tight_layout()
-fig.savefig('plot_rating_top_studios.jpeg')
+fig.savefig('outputs/plot_rating_top_studios.jpeg')
