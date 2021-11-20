@@ -54,4 +54,4 @@ fig = plotDF.plot(title='Number of animes produced by top studios each year',
                   xlabel='Year of production',
                   legend=True, kind='line').get_figure()
 fig.set_size_inches(14.5, 8.5, forward=True)
-fig.savefig('plot_anime_vs_year.jpeg')
+fig.savefig('outputs/plot_anime_vs_year.jpeg')
