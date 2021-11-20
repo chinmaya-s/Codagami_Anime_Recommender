@@ -25,29 +25,6 @@ df.dropna(subset=['genres'], inplace=True)
 df['start_date'] = pd.to_datetime(df['start_date'])
 df = df[df['start_date'].dt.year < 2022]
 
-# %%
-# df1 = pd.DataFrame(columns=df.columns)
-# df1 = df1[df1['genres'].notna()]
-# # df1 = df1[~df1['genres']]
-# # df1.dropna(subset=['genres'])
-# for count, row in df.iterrows():
-#     temp = row['genres']
-#     if not isinstance(temp, list):
-#         # print(type(temp))
-#         # print(type(temp))
-#         continue
-#     r1 = row
-#     for x in range(int(len(temp))):
-#         r1['genres'] = temp[x]
-#         df1.loc[len(df1.index)] = r1
-# df1
-
-# %%
-# df1[['id', 'genres']]
-
-# %%
-
-
 def melt_series(s):
     lengths = s.str.len().values
     flat = [i for i in itertools.chain.from_iterable(s.values.tolist())]
@@ -74,17 +51,9 @@ df1 = df1.pivot(index='start_date', columns='genre_name', values='anime_count')
 #            'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shounen', 'Slice of Life',
 #            'Space', 'Sports', 'Super Power', 'Supernatural']]
 
-# df1 = df1[['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy',
-#             'Hentai', 'Historical', 'Kids', 'Music', 'Romance',
-#            'School', 'Sci-Fi', 'Shounen', 'Slice of Life', 'Supernatural']]
-df1 = df1[['Action', 'Adventure', 'Drama',
-           'Hentai', 'Historical', 'Kids', 'Music', 'Romance',
+df1 = df1[['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy',
+            'Hentai', 'Historical', 'Kids', 'Music', 'Romance',
            'School', 'Sci-Fi', 'Shounen', 'Slice of Life', 'Supernatural']]
-
-# print(df1.columns)
-# df1.sum(axis=0, skipna=True)
-# df1 = df1[df['start_date'] < "2022-01-01"]
-# df1.iloc[-1]
 
 # %%
 plot = df1.groupby([(df1.index.year)]).sum().plot(
