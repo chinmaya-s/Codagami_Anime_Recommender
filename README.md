@@ -38,7 +38,6 @@ $ python <script_name.py>
 The output plots are stored in outputs/ directory.
 The details of various data analysis scripts are summarized in a table below.
 
-<Add your script details: Chinmaya, Rythm, Sakshi>
 | File Name | Description | Outputs | 
 | --- | ------------ | ------ |
 | age_rating_trends.py | Plots the trends of age rating groups on various variables | rating_vs_num_list_users.jpeg, rating_vs_num_episodes.jpeg, rating_vs_average_episode_duration.jpeg, rating_vs_mean.jpeg, rating_vs_rank.jpeg, rating_count.jpeg, rating_vs_popularity.jpeg, rating_num_anime_vs_year.jpeg  |        
