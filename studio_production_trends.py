@@ -8,15 +8,25 @@ names_list = ['Toei Animation', 'Sunrise',
               'J.C.Staff', 'Madhouse', 'Production I.G']
 ################################################################
 # Code to load data
-pathlist = Path('data').rglob('*.json')
+# pathlist = Path('data').rglob('*.json')
+# df_list = []
+# for path in pathlist:
+#     # because path is object not string
+#     path_in_str = str(path)
+#     json_file = open(path_in_str)
+#     data = json.load(json_file)
+#     df = pd.DataFrame.from_dict(data, orient='index')
+#     df_list.append(df)
+# pathlist = Path('data').rglob('*.json')
 df_list = []
-for path in pathlist:
+# for path in pathlist:
     # because path is object not string
-    path_in_str = str(path)
-    json_file = open(path_in_str)
-    data = json.load(json_file)
-    df = pd.DataFrame.from_dict(data, orient='index')
-    df_list.append(df)
+# path_in_str = str(path)
+json_file = open('data/anime_list_final_231.json')
+data = json.load(json_file)
+df = pd.DataFrame.from_dict(data, orient='index')
+df_list.append(df)
+    #  print(path_in_str)
 
 df = pd.concat(df_list, axis=1)
 
