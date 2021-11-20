@@ -35,7 +35,7 @@ mediaDF = mediaDF[~(mediaDF['media_type'] == 'unknown')]
 fig = mediaDF.plot(x='media_type', y='count', kind='bar', xlabel='Media Types',
                    ylabel='Number of animes', title='Number of animes produced of each media type').get_figure()
 plt.tight_layout()
-fig.savefig('animes_based_on_media_type_trends.jpeg')
+fig.savefig('outputs/animes_based_on_media_type_trends.jpeg')
 
 #########################################################
 # This section creates plot on which x-axis is media_type
@@ -56,4 +56,4 @@ userDF = userDF[~(userDF['media_type'] == 'unknown')]
 fig = userDF.plot(x='media_type', y='users', kind='bar', xlabel='Media Types', ylabel='Number of users',
                   title='Number of viewers of animes based on theit media types').get_figure()
 plt.tight_layout()
-fig.savefig('media_type_trends_based_on_users.jpeg')
+fig.savefig('outputs/media_type_trends_based_on_users.jpeg')
