@@ -27,6 +27,6 @@ df1.rename({'id': 'anime_count'}, axis=1, inplace=True)
 # %%
 # plot = df1.plot()
 # Grouping by year to make the plot smoother
-plot = df1.groupby([(df1.index.year)]).sum().plot(title='Number of anime started vs year')
+plot = df1.groupby([(df1.index.year)]).sum().plot(title='Number of anime started vs year', xlabel='Start Year', ylabel='Anime Count', legend=False)
 fig = plot.get_figure()
-fig.savefig("outputs/num_anime_vs_year.jpeg")
+fig.savefig("outputs/num_anime_vs_year.jpeg", bbox_inches='tight')
